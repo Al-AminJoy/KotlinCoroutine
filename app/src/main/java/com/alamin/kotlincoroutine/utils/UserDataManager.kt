@@ -1,4 +1,4 @@
-package com.alamin.kotlincoroutine
+package com.alamin.kotlincoroutine.utils
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO

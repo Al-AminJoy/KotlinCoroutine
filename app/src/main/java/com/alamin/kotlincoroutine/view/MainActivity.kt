@@ -1,27 +1,34 @@
-package com.alamin.kotlincoroutine
+package com.alamin.kotlincoroutine.view
 
-import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import butterknife.BindView
 import butterknife.ButterKnife
+import com.alamin.kotlincoroutine.viewModel.MainActivityViewModel
+import com.alamin.kotlincoroutine.R
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 
 class MainActivity : AppCompatActivity() {
-    @BindView(R.id.btnCount)
+   /* @BindView(R.id.btnCount)
     lateinit var btnCount:Button;
     @BindView(R.id.btnDownloadUserData)
     lateinit var btnDownloadUserData:Button;
     @BindView(R.id.tvCount)
     lateinit var tvCount:TextView;
     @BindView(R.id.tvUserMessage)
-    lateinit var tvUserMessage:TextView;
+    lateinit var tvUserMessage:TextView;*/
+   @BindView(R.id.progressBar)
+    lateinit var progressBar:ProgressBar;
 
    /* @BindView(R.id.statusButton)
     lateinit var btnStatus:Button;
@@ -34,10 +41,41 @@ class MainActivity : AppCompatActivity() {
     private var TAG : String = "MainActivity";
     private lateinit var job1 : Job;
 
+    private lateinit var mainActivityViewModel : MainActivityViewModel;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         ButterKnife.bind(this);
+        mainActivityViewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+        mainActivityViewModel.users.observe(this, Observer { myUser ->
+            myUser.forEach {
+                Log.i("MY_DATA","My ID is ${it.id} and Name is ${it.name}")
+            }
+
+        })
+    /*    if (savedInstanceState == null){
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.container,MainFragment.newInstance())
+                .commitNow();
+        }
+
+        lifecycleScope.launch(Main) {
+            delay(2000);
+            progressBar.visibility = View.VISIBLE
+            delay(3000)
+            progressBar.visibility = View.GONE
+        }*/
+
+
+      /*  mainActivityViewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+        mainActivityViewModel.getUserData();
+        mainActivityViewModel.users.observe(this, Observer { myUser ->
+            myUser.forEach {
+                Log.i("MY_DATA","My ID is ${it.id} and Name is ${it.name}")
+            }
+
+        })*/
 
       /*   btnCount.setOnClickListener {
           tvCount.text = count++.toString()
