@@ -14,21 +14,21 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 
 class MainActivity : AppCompatActivity() {
-/*    @BindView(R.id.btnCount)
+    @BindView(R.id.btnCount)
     lateinit var btnCount:Button;
     @BindView(R.id.btnDownloadUserData)
     lateinit var btnDownloadUserData:Button;
     @BindView(R.id.tvCount)
     lateinit var tvCount:TextView;
     @BindView(R.id.tvUserMessage)
-    lateinit var tvUserMessage:TextView;*/
+    lateinit var tvUserMessage:TextView;
 
-    @BindView(R.id.statusButton)
+   /* @BindView(R.id.statusButton)
     lateinit var btnStatus:Button;
     @BindView(R.id.cancelButton)
     lateinit var btnCancel:Button;
     @BindView(R.id.textView)
-    lateinit var textView:TextView;
+    lateinit var textView:TextView;*/
 
     private var count = 0
     private var TAG : String = "MainActivity"
@@ -38,6 +38,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         ButterKnife.bind(this);
+
+      /*   btnCount.setOnClickListener {
+          tvCount.text = count++.toString()
+      }
+      btnDownloadUserData.setOnClickListener {
+          CoroutineScope(Dispatchers.Main).launch {
+              tvUserMessage.text = UserDataManager().getUserCount().toString();
+          }
+      }*/
 
        /* btnCount.setOnClickListener {
             tvCount.text = count++.toString()
@@ -64,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         Log.i(TAG,"Total is $total")
     }*/
 
-       job1 =  CoroutineScope(Main).launch {
+     /*  job1 =  CoroutineScope(Main).launch {
            downloadData()
         }
 
@@ -81,7 +90,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-
+*/
     }
 
     private suspend fun downloadData (){
