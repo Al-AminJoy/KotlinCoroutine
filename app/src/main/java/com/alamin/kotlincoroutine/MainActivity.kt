@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var textView:TextView;*/
 
     private var count = 0
-    private var TAG : String = "MainActivity"
+    private var TAG : String = "MainActivity";
     private lateinit var job1 : Job;
 
     override fun onCreate(savedInstanceState: Bundle?) {
